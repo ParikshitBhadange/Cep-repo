@@ -1,0 +1,207 @@
+{
+  "id": "u_001",
+  "name": "Alex Sharma",
+  "username": "alexsh",
+  "headline": "Senior Frontend Engineer • UI Systems • Web Perf",
+  "bio": "Building fast, accessible UIs that scale. Passionate about design systems, performance optimization, and developer experience. Previously @Acme Corp. Writing about modern web development and sharing insights on creating maintainable frontend architectures.",
+  "location": "Bengaluru, India",
+  "website": "https://alex.dev",
+  "birthdate": "1996-10-15",
+  "joined": "2018-02-20",
+  "isVerified": true,
+  "badges": ["Open to Work", "Hiring"],
+  "stats": {
+    "followers": 12840,
+    "following": 512,
+    "connections": 750
+  },
+  "coverImage": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+  "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+  "contactInfo": {
+    "email": "alex@example.com",
+    "openDMs": true
+  },
+  "featured": [
+    { 
+      "type": "link", 
+      "title": "Design System Starter", 
+      "url": "https://example.com", 
+      "thumb": "https://images.unsplash.com/photo-1558655146-364adcfd9048?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      "description": "Open source design system built with React and Tailwind CSS"
+    },
+    { 
+      "type": "post", 
+      "postId": "p3" 
+    },
+    {
+      "type": "link",
+      "title": "Performance Monitoring Dashboard",
+      "url": "https://perf.alex.dev",
+      "thumb": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      "description": "Real-time web performance analytics tool"
+    }
+  ],
+  "experience": [
+    { 
+      "company": "Acme Corp", 
+      "role": "Senior Frontend Engineer", 
+      "start": "2021-05", 
+      "end": null, 
+      "desc": "Lead design system architecture and performance optimization initiatives. Built component library used by 50+ engineers. Improved Core Web Vitals by 40% across product suite.",
+      "logo": "https://images.unsplash.com/photo-1549923746-c502d488b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+    },
+    { 
+      "company": "Pixel Labs", 
+      "role": "Frontend Engineer", 
+      "start": "2019-03", 
+      "end": "2021-04", 
+      "desc": "Developed accessible component library and established engineering best practices. Implemented automated accessibility testing pipeline.",
+      "logo": "https://images.unsplash.com/photo-1572021335469-31706a17aaef?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+    },
+    {
+      "company": "StartupXYZ",
+      "role": "Junior Frontend Developer",
+      "start": "2017-06",
+      "end": "2019-02",
+      "desc": "Built responsive web applications using React and modern CSS. Collaborated with design team to implement pixel-perfect UIs.",
+      "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+    }
+  ],
+  "education": [
+    { 
+      "school": "Indian Institute of Science, Bangalore", 
+      "degree": "M.Tech in Computer Science", 
+      "start": "2017", 
+      "end": "2019",
+      "logo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+    },
+    {
+      "school": "National Institute of Technology, Karnataka",
+      "degree": "B.Tech in Information Technology",
+      "start": "2013",
+      "end": "2017",
+      "logo": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+    }
+  ],
+  "certifications": [
+    { 
+      "name": "Google UX Design Professional Certificate", 
+      "issuer": "Google", 
+      "year": 2023,
+      "logo": "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+    },
+    {
+      "name": "AWS Certified Solutions Architect",
+      "issuer": "Amazon Web Services",
+      "year": 2022,
+      "logo": "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+    }
+  ],
+  "skills": [
+    { "name": "React", "endorsements": 87 },
+    { "name": "TypeScript", "endorsements": 64 },
+    { "name": "Design Systems", "endorsements": 52 },
+    { "name": "Web Performance", "endorsements": 48 },
+    { "name": "Accessibility", "endorsements": 35 },
+    { "name": "Node.js", "endorsements": 42 },
+    { "name": "GraphQL", "endorsements": 28 },
+    { "name": "Tailwind CSS", "endorsements": 31 }
+  ],
+  "recommendations": [
+    { 
+      "from": "Priya K.", 
+      "role": "Product Manager at Acme Corp",
+      "text": "Alex consistently ships high-quality features and cares deeply about user experience details. Their expertise in design systems has been invaluable to our team.",
+      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+    },
+    {
+      "from": "Raj Patel",
+      "role": "Engineering Manager at Pixel Labs", 
+      "text": "One of the most thorough engineers I've worked with. Alex's attention to accessibility and performance set the standard for our entire frontend team.",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+    }
+  ],
+  "interests": ["Web Performance", "Accessibility", "Design Systems", "Developer Experience", "Open Source", "Teaching"],
+  "pinnedPostId": "p1",
+  "posts": [
+    { 
+      "id": "p1", 
+      "type": "text", 
+      "content": "Just shipped a zero-layout-shift header component! 🎉 Spent weeks perfecting the loading states and intersection observer logic. The key was pre-calculating heights and using CSS containment. Performance nerds, this one's for you! #WebPerf #React", 
+      "createdAt": "2025-08-20T10:33:00Z", 
+      "likes": 420, 
+      "reposts": 30, 
+      "replies": 12,
+      "isLiked": false,
+      "isReposted": false
+    },
+    { 
+      "id": "p2", 
+      "type": "image", 
+      "images": ["https://images.unsplash.com/photo-1558655146-364adcfd9048?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"], 
+      "content": "Color token system update is live! 🎨 New semantic tokens make theming so much cleaner. Dark mode variants are automatically generated now. Designers and engineers are both happy!", 
+      "createdAt": "2025-08-18T08:12:00Z", 
+      "likes": 210, 
+      "reposts": 12, 
+      "replies": 5,
+      "isLiked": true,
+      "isReposted": false
+    },
+    { 
+      "id": "p3", 
+      "type": "link", 
+      "url": "https://alex.dev/component-versioning", 
+      "title": "Component Versioning: A Design System's Best Friend",
+      "description": "How we version components in our design system without breaking existing implementations. Semantic versioning + automated migration scripts = happy developers.",
+      "thumb": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "content": "New article: How we version components in our design system 📝 Covers semantic versioning, automated migrations, and keeping 50+ engineers happy during updates. Link in bio!", 
+      "createdAt": "2025-08-10T07:00:00Z", 
+      "likes": 160, 
+      "reposts": 9, 
+      "replies": 3,
+      "isLiked": false,
+      "isReposted": true
+    },
+    {
+      "id": "p4",
+      "type": "text",
+      "content": "Hot take: The best design systems aren't about components—they're about communication. 💬 Clear documentation, good examples, and responsive maintainers matter more than perfect code. What do you think?",
+      "createdAt": "2025-08-05T14:22:00Z",
+      "likes": 89,
+      "reposts": 15,
+      "replies": 23,
+      "isLiked": true,
+      "isReposted": false
+    }
+  ],
+  "likedPosts": [
+    {
+      "id": "liked_1",
+      "author": "Sarah Chen",
+      "username": "sarahc_ux",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+      "content": "Typography is the foundation of good design. Master it first, then worry about the fancy animations. ✨ #DesignTips",
+      "createdAt": "2025-08-15T09:45:00Z",
+      "likes": 234,
+      "reposts": 45,
+      "replies": 12
+    }
+  ],
+  "lists": [
+    { "name": "Design System Folks", "count": 42, "description": "People building and maintaining design systems" },
+    { "name": "Frontend Performance", "count": 28, "description": "Web performance enthusiasts and experts" }
+  ],
+  "spaces": [
+    { 
+      "title": "Frontend Performance Chat", 
+      "scheduled": "2025-09-05T15:00:00+05:30",
+      "participants": 24,
+      "host": "Alex Sharma"
+    }
+  ],
+  "mutuals": [
+    { "name": "Rahul", "username": "rahul_dev", "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" },
+    { "name": "Meera", "username": "meeracodes", "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" },
+    { "name": "Amit", "username": "amit_designs", "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" }
+  ]
+}
