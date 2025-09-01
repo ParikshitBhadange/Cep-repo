@@ -1,115 +1,238 @@
-import { useState } from "react"
-import { 
-  MapPin, 
-  Calendar, 
-  Users, 
-  Eye, 
-  Edit3, 
-  Briefcase, 
-  GraduationCap, 
-  Award, 
-  Mail, 
-  Linkedin, 
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  FaSearch,
+  FaHome,
+  FaComments,
+  FaUsers,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
+import Logo from "../assets/Logo.png";
+
+import {
+  MapPin,
+  Calendar,
+  Users,
+  Eye,
+  Edit3,
+  Briefcase,
+  GraduationCap,
+  Award,
+  Mail,
+  Linkedin,
   Globe,
   X,
   Plus,
   Trash2,
   Camera,
-  Save
-} from "lucide-react"
+  Save,
+} from "lucide-react";
 
-const Button = ({ children, className = "", variant = "default", size = "default", onClick, ...props }) => {
-  const baseClasses = "inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none"
+const Button = ({
+  children,
+  className = "",
+  variant = "default",
+  size = "default",
+  onClick,
+  ...props
+}) => {
+  const baseClasses =
+    "inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
   const variants = {
     default: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
-    outline: "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-blue-500",
+    outline:
+      "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-blue-500",
     destructive: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
-    ghost: "hover:bg-gray-100 text-gray-700"
-  }
+    ghost: "hover:bg-gray-100 text-gray-700",
+  };
   const sizes = {
     default: "h-10 px-4 py-2",
     sm: "h-9 px-3 text-sm",
-    xs: "h-8 px-2 text-xs"
-  }
-  
+    xs: "h-8 px-2 text-xs",
+  };
+
   return (
-    <button 
+    <button
       className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`}
       onClick={onClick}
       {...props}
     >
       {children}
     </button>
-  )
-}
+  );
+};
 
 const Card = ({ children, className = "" }) => (
   <div className={`rounded-lg border bg-white shadow-sm ${className}`}>
     {children}
   </div>
-)
+);
 
 const Badge = ({ children, className = "", variant = "default" }) => {
   const variants = {
     default: "bg-gray-900 text-gray-50",
-    secondary: "bg-gray-100 text-gray-900"
-  }
-  
+    secondary: "bg-gray-100 text-gray-900",
+  };
+
   return (
-    <div className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors ${variants[variant]} ${className}`}>
+    <div
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors ${variants[variant]} ${className}`}
+    >
       {children}
     </div>
-  )
-}
+  );
+};
 
 const Input = ({ className = "", ...props }) => (
   <input
     className={`flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
     {...props}
   />
-)
+);
 
 const Textarea = ({ className = "", ...props }) => (
   <textarea
     className={`flex min-h-[80px] w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
     {...props}
   />
-)
+);
 
 const Label = ({ children, className = "", ...props }) => (
-  <label className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${className}`} {...props}>
+  <label
+    className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${className}`}
+    {...props}
+  >
     {children}
   </label>
-)
+);
+
+function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  return (
+    <>
+      <nav className="flex items-center justify-between bg-white shadow-md px-6 h-20">
+        <div className="flex flex-col sm:flex-row items-center gap-2">
+          <img
+            src={Logo}
+            alt="Career Catalyst Logo"
+            className="w-10 h-10 sm:w-12 sm:h-12"
+          />
+          <span className="text-lg sm:text-xl font-bold text-gray-800">
+            Career Catalyst
+          </span>
+        </div>
+        <div className="flex items-center bg-gray-100 rounded-full px-3 py-1 w-1/2 sm:w-1/3">
+          <FaSearch className="text-gray-500 mr-2" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="bg-transparent outline-none w-full text-gray-700 text-sm"
+          />
+        </div>
+        <div className="hidden md:flex items-center space-x-6 text-gray-700 font-medium">
+          <Link
+            to="/HomePage"
+            className="flex items-center hover:text-blue-600"
+          >
+            <FaHome className="mr-1" /> Home
+          </Link>
+          <Link
+            to="/communication"
+            className="flex items-center hover:text-blue-600"
+          >
+            <FaComments className="mr-1" /> Communication
+          </Link>
+          <Link
+            to="/Connections"
+            className="flex items-center hover:text-blue-600"
+          >
+            <FaUsers className="mr-1" /> Connections
+          </Link>
+          <Link to="/profile" className="flex items-center">
+            <div className="w-12 h-12 rounded-full border-4 bg-black border-[#282828] shadow-lg flex items-center justify-center">
+              <span className="text-sm font-semibold text-white">Pr.</span>
+            </div>
+          </Link>
+        </div>
+        <div className="md:hidden flex items-center">
+          <button onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+          </button>
+        </div>
+      </nav>
+      {menuOpen && (
+        <div className="md:hidden bg-white shadow-md flex flex-col space-y-4 p-6 text-gray-700 font-medium">
+          <Link
+            to="/HomePage"
+            className="flex items-center hover:text-blue-600"
+            onClick={() => setMenuOpen(false)}
+          >
+            <FaHome className="mr-2" /> Home
+          </Link>
+          <Link
+            to="/communication"
+            className="flex items-center hover:text-blue-600"
+            onClick={() => setMenuOpen(false)}
+          >
+            <FaComments className="mr-2" /> Communication
+          </Link>
+          <Link
+            to="/Connections"
+            className="flex items-center hover:text-blue-600"
+            onClick={() => setMenuOpen(false)}
+          >
+            <FaUsers className="mr-2" /> Connections
+          </Link>
+          <Link
+            to="/profile"
+            className="flex items-center"
+            onClick={() => setMenuOpen(false)}
+          >
+            <div className="w-10 h-10 rounded-full border-4 bg-black border-[#282828] shadow-lg flex items-center justify-center">
+              <span className="text-xs font-semibold text-white">Pr.</span>
+            </div>
+            <span className="ml-2">Profile</span>
+          </Link>
+        </div>
+      )}
+    </>
+  );
+}
 
 export default function AlumniProfile() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [profile, setProfile] = useState({
-    name: "Dr. Pooja Umekar",
+    name: "Dr. Amit Sharma ",
     title: "Assistant Professor & Research Scientist",
     company: "Pote College of Engineering",
     location: "Amravati, Maharashtra, India",
     graduationYear: "2015",
     major: "Electronics & Information Technology",
-    profileImage: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
+    profileImage:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
     connections: 847,
     profileViews: 289,
     userType: ["Alumni", "Faculty", "Researcher"],
-    about: "Passionate educator and researcher with over 10 years of experience in Electronics and Information Technology. Dedicated to fostering innovation in engineering education and contributing to cutting-edge research in embedded systems and IoT applications. Committed to mentoring the next generation of engineers and promoting technological advancement in academia.",
+    about:
+      "Passionate educator and researcher with over 10 years of experience in Electronics and Information Technology. Dedicated to fostering innovation in engineering education and contributing to cutting-edge research in embedded systems and IoT applications. Committed to mentoring the next generation of engineers and promoting technological advancement in academia.",
     experience: [
       {
         id: 1,
         title: "Assistant Professor",
         company: "Pote College of Engineering",
         duration: "2018 - Present",
-        description: "Leading undergraduate and postgraduate courses in Electronics Engineering. Supervising research projects in IoT and embedded systems. Published 15+ research papers in international journals."
+        description:
+          "Leading undergraduate and postgraduate courses in Electronics Engineering. Supervising research projects in IoT and embedded systems. Published 15+ research papers in international journals.",
       },
       {
         id: 2,
         title: "Research Associate",
         company: "Government College of Engineering, Amravati",
         duration: "2015 - 2018",
-        description: "Conducted research in wireless communication systems. Collaborated on industry-sponsored projects. Mentored undergraduate students in final year projects."
-      }
+        description:
+          "Conducted research in wireless communication systems. Collaborated on industry-sponsored projects. Mentored undergraduate students in final year projects.",
+      },
     ],
     education: [
       {
@@ -118,7 +241,7 @@ export default function AlumniProfile() {
         institution: "Government College of Engineering, Amravati",
         year: "2018",
         gpa: "9.2/10",
-        activities: "Research in Wireless Sensor Networks, IEEE Student Member"
+        activities: "Research in Wireless Sensor Networks, IEEE Student Member",
       },
       {
         id: 2,
@@ -126,8 +249,8 @@ export default function AlumniProfile() {
         institution: "Government College of Engineering, Amravati",
         year: "2015",
         gpa: "8.8/10",
-        activities: "Department Topper, Technical Society President"
-      }
+        activities: "Department Topper, Technical Society President",
+      },
     ],
     skills: [
       "Research & Development",
@@ -137,133 +260,242 @@ export default function AlumniProfile() {
       "Embedded Programming",
       "MATLAB/Simulink",
       "Python",
-      "Circuit Design"
+      "Circuit Design",
     ],
     achievements: [
       "Best Faculty Award 2023 - Pote College of Engineering",
       "Published 18 research papers in SCI indexed journals",
       "Principal Investigator for 3 funded research projects worth ₹25 Lakhs",
-      "IEEE Senior Member since 2020"
+      "IEEE Senior Member since 2020",
     ],
     contact: {
       email: "pooja.umekar@pote.edu.in",
       phone: "+91-9876543210",
       linkedin: "linkedin.com/in/pooja-umekar",
-      website: "www.poojaumekar-research.com"
-    }
-  })
+      website: "www.poojaumekar-research.com",
+    },
+  });
 
-  const [activeTab, setActiveTab] = useState("about")
-  const [isEditing, setIsEditing] = useState(false)
-  const [editSection, setEditSection] = useState("basic")
-  const [editForm, setEditForm] = useState(profile)
-  const [newExperience, setNewExperience] = useState({ title: "", company: "", duration: "", description: "" })
-  const [newEducation, setNewEducation] = useState({ degree: "", institution: "", year: "", gpa: "", activities: "" })
-  const [newSkill, setNewSkill] = useState("")
-  const [newAchievement, setNewAchievement] = useState("")
+  const [activeTab, setActiveTab] = useState("about");
+  const [isEditing, setIsEditing] = useState(false);
+  const [editSection, setEditSection] = useState("basic");
+  const [editForm, setEditForm] = useState(profile);
+  const [newExperience, setNewExperience] = useState({
+    title: "",
+    company: "",
+    duration: "",
+    description: "",
+  });
+  const [newEducation, setNewEducation] = useState({
+    degree: "",
+    institution: "",
+    year: "",
+    gpa: "",
+    activities: "",
+  });
+  const [newSkill, setNewSkill] = useState("");
+  const [newAchievement, setNewAchievement] = useState("");
 
   const handleSave = () => {
-    setProfile(editForm)
-    setIsEditing(false)
-    setEditSection("basic")
-  }
+    setProfile(editForm);
+    setIsEditing(false);
+    setEditSection("basic");
+  };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0]
+    const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.onload = (e) => {
-        setEditForm({ ...editForm, profileImage: e.target.result })
-      }
-      reader.readAsDataURL(file)
+        setEditForm({ ...editForm, profileImage: e.target.result });
+      };
+      reader.readAsDataURL(file);
     }
-  }
+  };
 
   const addExperience = () => {
     if (newExperience.title && newExperience.company) {
       setEditForm({
         ...editForm,
-        experience: [...editForm.experience, { ...newExperience, id: Date.now() }]
-      })
-      setNewExperience({ title: "", company: "", duration: "", description: "" })
+        experience: [...editForm.experience, { ...newExperience, id: Date.now() }],
+      });
+      setNewExperience({ title: "", company: "", duration: "", description: "" });
     }
-  }
+  };
 
   const removeExperience = (id) => {
     setEditForm({
       ...editForm,
-      experience: editForm.experience.filter(exp => exp.id !== id)
-    })
-  }
+      experience: editForm.experience.filter((exp) => exp.id !== id),
+    });
+  };
 
   const addEducation = () => {
     if (newEducation.degree && newEducation.institution) {
       setEditForm({
         ...editForm,
-        education: [...editForm.education, { ...newEducation, id: Date.now() }]
-      })
-      setNewEducation({ degree: "", institution: "", year: "", gpa: "", activities: "" })
+        education: [...editForm.education, { ...newEducation, id: Date.now() }],
+      });
+      setNewEducation({ degree: "", institution: "", year: "", gpa: "", activities: "" });
     }
-  }
+  };
 
   const removeEducation = (id) => {
     setEditForm({
       ...editForm,
-      education: editForm.education.filter(edu => edu.id !== id)
-    })
-  }
+      education: editForm.education.filter((edu) => edu.id !== id),
+    });
+  };
 
   const addSkill = () => {
     if (newSkill.trim() && !editForm.skills.includes(newSkill.trim())) {
       setEditForm({
         ...editForm,
-        skills: [...editForm.skills, newSkill.trim()]
-      })
-      setNewSkill("")
+        skills: [...editForm.skills, newSkill.trim()],
+      });
+      setNewSkill("");
     }
-  }
+  };
 
   const removeSkill = (skillToRemove) => {
     setEditForm({
       ...editForm,
-      skills: editForm.skills.filter(skill => skill !== skillToRemove)
-    })
-  }
+      skills: editForm.skills.filter((skill) => skill !== skillToRemove),
+    });
+  };
 
   const addAchievement = () => {
     if (newAchievement.trim()) {
       setEditForm({
         ...editForm,
-        achievements: [...editForm.achievements, newAchievement.trim()]
-      })
-      setNewAchievement("")
+        achievements: [...editForm.achievements, newAchievement.trim()],
+      });
+      setNewAchievement("");
     }
-  }
+  };
 
   const removeAchievement = (achievementToRemove) => {
     setEditForm({
       ...editForm,
-      achievements: editForm.achievements.filter(achievement => achievement !== achievementToRemove)
-    })
-  }
+      achievements: editForm.achievements.filter(
+        (achievement) => achievement !== achievementToRemove
+      ),
+    });
+  };
 
   const toggleUserType = (type) => {
-    const currentTypes = editForm.userType || []
+    const currentTypes = editForm.userType || [];
     if (currentTypes.includes(type)) {
       setEditForm({
         ...editForm,
-        userType: currentTypes.filter(t => t !== type)
-      })
+        userType: currentTypes.filter((t) => t !== type),
+      });
     } else {
       setEditForm({
         ...editForm,
-        userType: [...currentTypes, type]
-      })
+        userType: [...currentTypes, type],
+      });
     }
-  }
+  };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6 bg-slate-50 min-h-screen">
+    <>
+      {/* Navbar */}
+      <nav className="flex items-center justify-between bg-white shadow-md px-6 h-20">
+        {/* Left: Logo + Name */}
+        <div className="flex flex-col sm:flex-row items-center gap-2">
+          {/* Logo Image */}
+          <img
+            src={Logo}
+            alt="Career Catalyst Logo"
+            className="w-10 h-10 sm:w-12 sm:h-12"
+          />
+          {/* Career Catalyst Text */}
+          <span className="text-lg sm:text-xl font-bold text-gray-800">
+            Career Catalyst
+          </span>
+        </div>
+        {/* Middle: Search Bar (always visible, adjusts size) */}
+        <div className="flex items-center bg-gray-100 rounded-full px-3 py-1 w-1/2 sm:w-1/3">
+          <FaSearch className="text-gray-500 mr-2" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="bg-transparent outline-none w-full text-gray-700 text-sm"
+          />
+        </div>
+        {/* Right: Nav Links (Desktop only) */}
+        <div className="hidden md:flex items-center space-x-6 text-gray-700 font-medium">
+          <Link
+            to="/HomePage"
+            className="flex items-center hover:text-blue-600"
+          >
+            <FaHome className="mr-1" /> Home
+          </Link>
+          <Link
+            to="/communication"
+            className="flex items-center hover:text-blue-600"
+          >
+            <FaComments className="mr-1" /> Communication
+          </Link>
+          <Link
+            to="/Connections"
+            className="flex items-center hover:text-blue-600"
+          >
+            <FaUsers className="mr-1" /> Connections
+          </Link>
+          {/* Profile Image */}
+          <Link to="/profile" className="flex items-center">
+            <div className="w-12 h-12 rounded-full border-4 bg-black border-[#282828] shadow-lg flex items-center justify-center">
+              <span className="text-sm font-semibold text-white">Pr.</span>
+            </div>
+          </Link>
+        </div>
+        {/* Mobile Hamburger Icon */}
+        <div className="md:hidden flex items-center">
+          <button onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+          </button>
+        </div>
+      </nav>
+      {/* Mobile Dropdown Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-white shadow-md flex flex-col space-y-4 p-6 text-gray-700 font-medium">
+          <Link
+            to="/HomePage"
+            className="flex items-center hover:text-blue-600"
+            onClick={() => setMenuOpen(false)}
+          >
+            <FaHome className="mr-2" /> Home
+          </Link>
+          <Link
+            to="/communication"
+            className="flex items-center hover:text-blue-600"
+            onClick={() => setMenuOpen(false)}
+          >
+            <FaComments className="mr-2" /> Communication
+          </Link>
+          <Link
+            to="/Connections"
+            className="flex items-center hover:text-blue-600"
+            onClick={() => setMenuOpen(false)}
+          >
+            <FaUsers className="mr-2" /> Connections
+          </Link>
+          {/* Profile */}
+          <Link
+            to="/profile"
+            className="flex items-center"
+            onClick={() => setMenuOpen(false)}
+          >
+            <div className="w-10 h-10 rounded-full border-4 bg-black border-[#282828] shadow-lg flex items-center justify-center">
+              <span className="text-xs font-semibold text-white">Pr.</span>
+            </div>
+            <span className="ml-2">Profile</span>
+          </Link>
+        </div>
+      )}
+
       {/* Profile Header */}
       <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-100">
         <div className="p-8">
@@ -279,9 +511,15 @@ export default function AlumniProfile() {
 
             <div className="flex-1 space-y-3">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">{profile.name}</h1>
-                <p className="text-xl text-gray-700 font-medium">{profile.title}</p>
-                <p className="text-lg text-blue-600 font-medium">{profile.company}</p>
+                <h1 className="text-3xl font-bold text-gray-900">
+                  {profile.name}
+                </h1>
+                <p className="text-xl text-gray-700 font-medium">
+                  {profile.title}
+                </p>
+                <p className="text-lg text-blue-600 font-medium">
+                  {profile.company}
+                </p>
               </div>
 
               <div className="flex flex-wrap items-center gap-4 text-gray-600">
@@ -318,20 +556,25 @@ export default function AlumniProfile() {
                     Alumni: "bg-blue-100 text-blue-800",
                     Faculty: "bg-green-100 text-green-800",
                     Researcher: "bg-purple-100 text-purple-800",
-                    Student: "bg-orange-100 text-orange-800"
-                  }
+                    Student: "bg-orange-100 text-orange-800",
+                  };
                   return (
-                    <Badge key={index} className={colors[type] || "bg-gray-100 text-gray-800"}>
+                    <Badge
+                      key={index}
+                      className={
+                        colors[type] || "bg-gray-100 text-gray-800"
+                      }
+                    >
                       {type}
                     </Badge>
-                  )
+                  );
                 })}
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="bg-white hover:bg-gray-50"
                 onClick={() => setIsEditing(true)}
               >
@@ -364,7 +607,7 @@ export default function AlumniProfile() {
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold">Edit Profile</h2>
-                <button 
+                <button
                   onClick={() => setIsEditing(false)}
                   className="p-2 hover:bg-gray-100 rounded-full"
                 >
@@ -380,13 +623,15 @@ export default function AlumniProfile() {
                   { key: "experience", label: "Experience", icon: Briefcase },
                   { key: "education", label: "Education", icon: GraduationCap },
                   { key: "skills", label: "Skills", icon: Award },
-                  { key: "achievements", label: "Achievements", icon: Award }
+                  { key: "achievements", label: "Achievements", icon: Award },
                 ].map(({ key, label, icon: Icon }) => (
                   <button
                     key={key}
                     onClick={() => setEditSection(key)}
                     className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${
-                      editSection === key ? "bg-blue-100 text-blue-700" : "hover:bg-gray-100"
+                      editSection === key
+                        ? "bg-blue-100 text-blue-700"
+                        : "hover:bg-gray-100"
                     }`}
                   >
                     <Icon className="w-4 h-4" />
@@ -400,7 +645,7 @@ export default function AlumniProfile() {
                 {editSection === "basic" && (
                   <div className="space-y-4">
                     <h3 className="font-medium text-gray-900">Basic Information</h3>
-                    
+
                     {/* Profile Image */}
                     <div>
                       <Label>Profile Image</Label>
@@ -419,7 +664,11 @@ export default function AlumniProfile() {
                             id="image-upload"
                           />
                           <label htmlFor="image-upload">
-                            <Button variant="outline" size="sm" className="cursor-pointer">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="cursor-pointer"
+                            >
                               <Camera className="w-4 h-4 mr-2" />
                               Change Photo
                             </Button>
@@ -432,7 +681,9 @@ export default function AlumniProfile() {
                       <Label>Full Name</Label>
                       <Input
                         value={editForm.name}
-                        onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+                        onChange={(e) =>
+                          setEditForm({ ...editForm, name: e.target.value })
+                        }
                         placeholder="Enter full name"
                       />
                     </div>
@@ -441,7 +692,9 @@ export default function AlumniProfile() {
                       <Label>Professional Title</Label>
                       <Input
                         value={editForm.title}
-                        onChange={(e) => setEditForm({ ...editForm, title: e.target.value })}
+                        onChange={(e) =>
+                          setEditForm({ ...editForm, title: e.target.value })
+                        }
                         placeholder="Enter professional title"
                       />
                     </div>
@@ -450,7 +703,9 @@ export default function AlumniProfile() {
                       <Label>Company/Institution</Label>
                       <Input
                         value={editForm.company}
-                        onChange={(e) => setEditForm({ ...editForm, company: e.target.value })}
+                        onChange={(e) =>
+                          setEditForm({ ...editForm, company: e.target.value })
+                        }
                         placeholder="Enter company or institution"
                       />
                     </div>
@@ -459,7 +714,9 @@ export default function AlumniProfile() {
                       <Label>Location</Label>
                       <Input
                         value={editForm.location}
-                        onChange={(e) => setEditForm({ ...editForm, location: e.target.value })}
+                        onChange={(e) =>
+                          setEditForm({ ...editForm, location: e.target.value })
+                        }
                         placeholder="Enter location"
                       />
                     </div>
@@ -468,7 +725,12 @@ export default function AlumniProfile() {
                       <Label>Graduation Year</Label>
                       <Input
                         value={editForm.graduationYear}
-                        onChange={(e) => setEditForm({ ...editForm, graduationYear: e.target.value })}
+                        onChange={(e) =>
+                          setEditForm({
+                            ...editForm,
+                            graduationYear: e.target.value,
+                          })
+                        }
                         placeholder="Enter graduation year"
                       />
                     </div>
@@ -477,7 +739,9 @@ export default function AlumniProfile() {
                       <Label>Major/Field of Study</Label>
                       <Input
                         value={editForm.major}
-                        onChange={(e) => setEditForm({ ...editForm, major: e.target.value })}
+                        onChange={(e) =>
+                          setEditForm({ ...editForm, major: e.target.value })
+                        }
                         placeholder="Enter major or field of study"
                       />
                     </div>
@@ -510,7 +774,9 @@ export default function AlumniProfile() {
                       <Label>About Description</Label>
                       <Textarea
                         value={editForm.about}
-                        onChange={(e) => setEditForm({ ...editForm, about: e.target.value })}
+                        onChange={(e) =>
+                          setEditForm({ ...editForm, about: e.target.value })
+                        }
                         rows={6}
                         placeholder="Write about yourself..."
                       />
@@ -521,14 +787,14 @@ export default function AlumniProfile() {
                 {editSection === "experience" && (
                   <div className="space-y-4">
                     <h3 className="font-medium text-gray-900">Experience</h3>
-                    
+
                     {/* Existing Experience */}
                     {editForm.experience.map((exp, index) => (
                       <div key={exp.id} className="p-4 border rounded-lg space-y-3">
                         <div className="flex justify-between items-start">
                           <h4 className="font-medium text-sm">Experience {index + 1}</h4>
-                          <Button 
-                            size="xs" 
+                          <Button
+                            size="xs"
                             variant="destructive"
                             onClick={() => removeExperience(exp.id)}
                           >
@@ -539,40 +805,40 @@ export default function AlumniProfile() {
                           placeholder="Job Title"
                           value={exp.title}
                           onChange={(e) => {
-                            const updated = editForm.experience.map(item => 
+                            const updated = editForm.experience.map((item) =>
                               item.id === exp.id ? { ...item, title: e.target.value } : item
-                            )
-                            setEditForm({ ...editForm, experience: updated })
+                            );
+                            setEditForm({ ...editForm, experience: updated });
                           }}
                         />
                         <Input
                           placeholder="Company"
                           value={exp.company}
                           onChange={(e) => {
-                            const updated = editForm.experience.map(item => 
+                            const updated = editForm.experience.map((item) =>
                               item.id === exp.id ? { ...item, company: e.target.value } : item
-                            )
-                            setEditForm({ ...editForm, experience: updated })
+                            );
+                            setEditForm({ ...editForm, experience: updated });
                           }}
                         />
                         <Input
                           placeholder="Duration (e.g., 2020 - Present)"
                           value={exp.duration}
                           onChange={(e) => {
-                            const updated = editForm.experience.map(item => 
+                            const updated = editForm.experience.map((item) =>
                               item.id === exp.id ? { ...item, duration: e.target.value } : item
-                            )
-                            setEditForm({ ...editForm, experience: updated })
+                            );
+                            setEditForm({ ...editForm, experience: updated });
                           }}
                         />
                         <Textarea
                           placeholder="Description"
                           value={exp.description}
                           onChange={(e) => {
-                            const updated = editForm.experience.map(item => 
+                            const updated = editForm.experience.map((item) =>
                               item.id === exp.id ? { ...item, description: e.target.value } : item
-                            )
-                            setEditForm({ ...editForm, experience: updated })
+                            );
+                            setEditForm({ ...editForm, experience: updated });
                           }}
                           rows={3}
                         />
@@ -581,26 +847,36 @@ export default function AlumniProfile() {
 
                     {/* Add New Experience */}
                     <div className="p-4 border-2 border-dashed border-gray-300 rounded-lg space-y-3">
-                      <h4 className="font-medium text-sm text-gray-600">Add New Experience</h4>
+                      <h4 className="font-medium text-sm text-gray-600">
+                        Add New Experience
+                      </h4>
                       <Input
                         placeholder="Job Title"
                         value={newExperience.title}
-                        onChange={(e) => setNewExperience({ ...newExperience, title: e.target.value })}
+                        onChange={(e) =>
+                          setNewExperience({ ...newExperience, title: e.target.value })
+                        }
                       />
                       <Input
                         placeholder="Company"
                         value={newExperience.company}
-                        onChange={(e) => setNewExperience({ ...newExperience, company: e.target.value })}
+                        onChange={(e) =>
+                          setNewExperience({ ...newExperience, company: e.target.value })
+                        }
                       />
                       <Input
                         placeholder="Duration (e.g., 2020 - Present)"
                         value={newExperience.duration}
-                        onChange={(e) => setNewExperience({ ...newExperience, duration: e.target.value })}
+                        onChange={(e) =>
+                          setNewExperience({ ...newExperience, duration: e.target.value })
+                        }
                       />
                       <Textarea
                         placeholder="Description"
                         value={newExperience.description}
-                        onChange={(e) => setNewExperience({ ...newExperience, description: e.target.value })}
+                        onChange={(e) =>
+                          setNewExperience({ ...newExperience, description: e.target.value })
+                        }
                         rows={3}
                       />
                       <Button size="sm" onClick={addExperience} className="w-full">
@@ -614,14 +890,14 @@ export default function AlumniProfile() {
                 {editSection === "education" && (
                   <div className="space-y-4">
                     <h3 className="font-medium text-gray-900">Education</h3>
-                    
+
                     {/* Existing Education */}
                     {editForm.education.map((edu, index) => (
                       <div key={edu.id} className="p-4 border rounded-lg space-y-3">
                         <div className="flex justify-between items-start">
                           <h4 className="font-medium text-sm">Education {index + 1}</h4>
-                          <Button 
-                            size="xs" 
+                          <Button
+                            size="xs"
                             variant="destructive"
                             onClick={() => removeEducation(edu.id)}
                           >
@@ -632,20 +908,20 @@ export default function AlumniProfile() {
                           placeholder="Degree"
                           value={edu.degree}
                           onChange={(e) => {
-                            const updated = editForm.education.map(item => 
+                            const updated = editForm.education.map((item) =>
                               item.id === edu.id ? { ...item, degree: e.target.value } : item
-                            )
-                            setEditForm({ ...editForm, education: updated })
+                            );
+                            setEditForm({ ...editForm, education: updated });
                           }}
                         />
                         <Input
                           placeholder="Institution"
                           value={edu.institution}
                           onChange={(e) => {
-                            const updated = editForm.education.map(item => 
+                            const updated = editForm.education.map((item) =>
                               item.id === edu.id ? { ...item, institution: e.target.value } : item
-                            )
-                            setEditForm({ ...editForm, education: updated })
+                            );
+                            setEditForm({ ...editForm, education: updated });
                           }}
                         />
                         <div className="grid grid-cols-2 gap-2">
@@ -653,20 +929,20 @@ export default function AlumniProfile() {
                             placeholder="Year"
                             value={edu.year}
                             onChange={(e) => {
-                              const updated = editForm.education.map(item => 
+                              const updated = editForm.education.map((item) =>
                                 item.id === edu.id ? { ...item, year: e.target.value } : item
-                              )
-                              setEditForm({ ...editForm, education: updated })
+                              );
+                              setEditForm({ ...editForm, education: updated });
                             }}
                           />
                           <Input
                             placeholder="GPA (optional)"
                             value={edu.gpa || ""}
                             onChange={(e) => {
-                              const updated = editForm.education.map(item => 
+                              const updated = editForm.education.map((item) =>
                                 item.id === edu.id ? { ...item, gpa: e.target.value } : item
-                              )
-                              setEditForm({ ...editForm, education: updated })
+                              );
+                              setEditForm({ ...editForm, education: updated });
                             }}
                           />
                         </div>
@@ -674,10 +950,10 @@ export default function AlumniProfile() {
                           placeholder="Activities (optional)"
                           value={edu.activities || ""}
                           onChange={(e) => {
-                            const updated = editForm.education.map(item => 
+                            const updated = editForm.education.map((item) =>
                               item.id === edu.id ? { ...item, activities: e.target.value } : item
-                            )
-                            setEditForm({ ...editForm, education: updated })
+                            );
+                            setEditForm({ ...editForm, education: updated });
                           }}
                         />
                       </div>
@@ -685,33 +961,45 @@ export default function AlumniProfile() {
 
                     {/* Add New Education */}
                     <div className="p-4 border-2 border-dashed border-gray-300 rounded-lg space-y-3">
-                      <h4 className="font-medium text-sm text-gray-600">Add New Education</h4>
+                      <h4 className="font-medium text-sm text-gray-600">
+                        Add New Education
+                      </h4>
                       <Input
                         placeholder="Degree"
                         value={newEducation.degree}
-                        onChange={(e) => setNewEducation({ ...newEducation, degree: e.target.value })}
+                        onChange={(e) =>
+                          setNewEducation({ ...newEducation, degree: e.target.value })
+                        }
                       />
                       <Input
                         placeholder="Institution"
                         value={newEducation.institution}
-                        onChange={(e) => setNewEducation({ ...newEducation, institution: e.target.value })}
+                        onChange={(e) =>
+                          setNewEducation({ ...newEducation, institution: e.target.value })
+                        }
                       />
                       <div className="grid grid-cols-2 gap-2">
                         <Input
                           placeholder="Year"
                           value={newEducation.year}
-                          onChange={(e) => setNewEducation({ ...newEducation, year: e.target.value })}
+                          onChange={(e) =>
+                            setNewEducation({ ...newEducation, year: e.target.value })
+                          }
                         />
                         <Input
                           placeholder="GPA"
                           value={newEducation.gpa}
-                          onChange={(e) => setNewEducation({ ...newEducation, gpa: e.target.value })}
+                          onChange={(e) =>
+                            setNewEducation({ ...newEducation, gpa: e.target.value })
+                          }
                         />
                       </div>
                       <Input
                         placeholder="Activities"
                         value={newEducation.activities}
-                        onChange={(e) => setNewEducation({ ...newEducation, activities: e.target.value })}
+                        onChange={(e) =>
+                          setNewEducation({ ...newEducation, activities: e.target.value })
+                        }
                       />
                       <Button size="sm" onClick={addEducation} className="w-full">
                         <Plus className="w-4 h-4 mr-2" />
@@ -724,11 +1012,14 @@ export default function AlumniProfile() {
                 {editSection === "skills" && (
                   <div className="space-y-4">
                     <h3 className="font-medium text-gray-900">Skills</h3>
-                    
+
                     {/* Existing Skills */}
                     <div className="flex flex-wrap gap-2">
                       {editForm.skills.map((skill, index) => (
-                        <div key={index} className="flex items-center gap-1 bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">
+                        <div
+                          key={index}
+                          className="flex items-center gap-1 bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs"
+                        >
                           <span>{skill}</span>
                           <button
                             onClick={() => removeSkill(skill)}
@@ -746,7 +1037,7 @@ export default function AlumniProfile() {
                         placeholder="Add new skill"
                         value={newSkill}
                         onChange={(e) => setNewSkill(e.target.value)}
-                        onKeyPress={(e) => e.key === 'Enter' && addSkill()}
+                        onKeyPress={(e) => e.key === "Enter" && addSkill()}
                       />
                       <Button size="sm" onClick={addSkill}>
                         <Plus className="w-4 h-4" />
@@ -758,7 +1049,7 @@ export default function AlumniProfile() {
                 {editSection === "achievements" && (
                   <div className="space-y-4">
                     <h3 className="font-medium text-gray-900">Achievements</h3>
-                    
+
                     {/* Existing Achievements */}
                     {editForm.achievements.map((achievement, index) => (
                       <div key={index} className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
@@ -835,11 +1126,19 @@ export default function AlumniProfile() {
                     Contact Information
                   </h3>
                   <div className="space-y-2 text-sm text-gray-600">
-                    <p><strong>Email:</strong> {profile.contact.email}</p>
-                    <p><strong>Phone:</strong> {profile.contact.phone}</p>
-                    <p><strong>LinkedIn:</strong> {profile.contact.linkedin}</p>
+                    <p>
+                      <strong>Email:</strong> {profile.contact.email}
+                    </p>
+                    <p>
+                      <strong>Phone:</strong> {profile.contact.phone}
+                    </p>
+                    <p>
+                      <strong>LinkedIn:</strong> {profile.contact.linkedin}
+                    </p>
                     {profile.contact.website && (
-                      <p><strong>Website:</strong> {profile.contact.website}</p>
+                      <p>
+                        <strong>Website:</strong> {profile.contact.website}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -850,10 +1149,18 @@ export default function AlumniProfile() {
                     Alumni Details
                   </h3>
                   <div className="space-y-2 text-sm text-gray-600">
-                    <p><strong>Graduation Year:</strong> {profile.graduationYear}</p>
-                    <p><strong>Major:</strong> {profile.major}</p>
-                    <p><strong>Current Role:</strong> {profile.title}</p>
-                    <p><strong>Industry:</strong> Education & Research</p>
+                    <p>
+                      <strong>Graduation Year:</strong> {profile.graduationYear}
+                    </p>
+                    <p>
+                      <strong>Major:</strong> {profile.major}
+                    </p>
+                    <p>
+                      <strong>Current Role:</strong> {profile.title}
+                    </p>
+                    <p>
+                      <strong>Industry:</strong> Education & Research
+                    </p>
                   </div>
                 </div>
               </div>
@@ -937,6 +1244,6 @@ export default function AlumniProfile() {
           )}
         </div>
       </Card>
-    </div>
-  )
+      </>
+  );
 }

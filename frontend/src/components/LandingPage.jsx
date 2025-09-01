@@ -184,12 +184,10 @@ const CareerCatalystLanding = () => {
       <section id="join" className="py-16 px-4">
         <div className="container mx-auto bg-transparent border-2 border-white rounded-3xl text-center p-10 shadow-lg">
           <h2 className="text-3xl font-bold text-white mb-6">Ready to join the Career Catalyst community?</h2>
-          <a 
-            href="#" 
-            className="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-blue-600 transition-all duration-300 transform hover:scale-105 shadow-md"
-          >
+          <Link to="/Login" 
+          className="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-blue-600 transition-all duration-300 transform hover:scale-105 shadow-md">
             Sign Up Now
-          </a>
+          </Link>
         </div>
       </section>
 
