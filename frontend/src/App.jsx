@@ -2,6 +2,7 @@ import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import LandingPage from "./components/LandingPage"
 import Profile from "./components/Profile"
+// import Connections from './components/Connections'
 // import LoginPage from "./components/LoginPage"
 
 const App = () => {
